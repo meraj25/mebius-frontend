@@ -52,7 +52,7 @@ export const Api = createApi({
         body: order,
       }),
     }),
-    getCheckoutSessionStatus: build.query({
+   getCheckoutSessionStatus: build.query({
       query: (sessionId) => `/payments/session-status?session_id=${sessionId}`,
     }),
   }),

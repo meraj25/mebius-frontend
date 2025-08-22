@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useGetCheckoutSessionStatusQuery } from "@/lib/api";
-import { Link, Navigate, useSearchParams } from "react-router";
-
-const BASE_URL = import.meta.env.VITE_BASE_URL;
+import { Link, useSearchParams, Navigate } from "react-router";
 
 function CompletePage() {
   const [searchParams, setSearchParams] = useSearchParams();
