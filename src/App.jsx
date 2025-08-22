@@ -1,4 +1,7 @@
 import Navigation from "./components/Navigation"
+import HeroGrid from "./components/HeroGrid"
+import CasualInspirations from "./components/CasualInspiration"
+import TrendingSection from "./components/TrendingSection"
 
 const App = () => {
  
@@ -6,11 +9,12 @@ const App = () => {
   return (
 <>
 
-<Navigation />
+
 <main className="flex flex-col gap-8 md:gap-12 pb-8">
-        <HeroGrid />
-        <CasualInspirations />
-        <TrendingSection />
+     <Navigation />
+     <HeroGrid />
+      <CasualInspirations />
+//       <TrendingSection />
       </main>
 
 </>
@@ -18,3 +22,4 @@ const App = () => {
 }
 
 export default App;
+//      

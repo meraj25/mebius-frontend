@@ -29,4 +29,4 @@ function CasualInspirations() {
   );
 }
 
-export default CasualInspirations; 
+export default CasualInspirations;

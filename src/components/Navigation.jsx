@@ -1,18 +1,29 @@
 import { useState } from "react";
-// import { Link } from "react-router";
+import { Link } from "react-router";
 import { Menu, X, ShoppingBag, Search, User } from "lucide-react";
+import { useSelector } from "react-redux";
 // import { useSelector } from "react-redux";
-// import { SignedIn, UserButton, SignedOut } from "@clerk/clerk-react";
+import { SignedIn, UserButton, SignedOut } from "@clerk/clerk-react";
 
 export default function Navigation() {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // const cartItems = useSelector((state) => state.cart.value);
 
   // Calculate total quantity of items in cart
-  // const cartItemCount = cartItems.reduce(
-  //   (total, item) => total + item.quantity,
-  //   0
-  // );
+  const cartItemCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+
+  // const calculateCartItems = () => {
+  //   const total = 0;
+  //   for (let i = 0; i < array.length; i++) {
+  //     const item = array[i];
+  //     total = total + item.quantity;
+  //   }
+  // };
 
   // Function href close mobile menu
   const closeMobileMenu = () => setIsMenuOpen(false);
@@ -20,21 +31,21 @@ export default function Navigation() {
   return (
     <header className="bg-white border-b border-gray-200 px-4 lg:px-16">
       <div>
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20 px-4 ml-8">
           {/* Logo */}
-          <a href="/" className="font-bold text-2xl">
+          <Link to="/" className="font-bold text-3xl m-8 ">
             Mebius
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-24">
             {[
               {
                 path: "/shop/shoes",
                 label: "Shoes",
               },
               {
-                path: "/shop/tshirts",
+                path: "/shop/t-shirts",
                 label: "T-Shirt",
               },
               {
@@ -51,42 +62,45 @@ export default function Navigation() {
               },
             ].map((item) => {
               return (
-                <a
+                <Link
                   key={item.path}
-                  href={item.path}
+                  to={item.path}
                   className="font-medium hover:text-gray-600"
                 >
                   {item.label}
-                </a>
+                </Link>
               );
             })}
           </nav>
+          <div>
+            <Link to="/admin/products/create">Create Product</Link>
+          </div>
 
           {/* Icons */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-6 mr-6">
             <button aria-label="Search" className="p-1">
               <Search size={20} />
             </button>
-            <a
-              href="/shop/cart"
+            <Link
+              to="/shop/cart"
               aria-label="Shopping Bag"
               className="p-1 relative"
             >
               <ShoppingBag size={20} />
               <span className="absolute -top-1 -right-1 bg-black text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
-                {0}
+                {cartItemCount}
               </span>
-            </a>
-            {/* <SignedIn>
+            </Link>
+            <SignedIn>
               <UserButton />
-            </SignedIn> */}
+            </SignedIn>
             <div className="hidden md:block">
-              {/* <SignedOut> */}
-              <div className="flex items-center gap-4">
-                <a href="/sign-in">Sign In</a>
-                <a href="/sign-up">Sign Up</a>
-              </div>
-              {/* </SignedOut> */}
+              <SignedOut>
+                <div className="flex items-center gap-4">
+                  <Link to="/sign-in">Sign In</Link>
+                  <Link to="/sign-up">Sign Up</Link>
+                </div>
+              </SignedOut>
             </div>
 
             {/* Mobile menu button */}
@@ -106,30 +120,30 @@ export default function Navigation() {
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200">
             {[
-              { path: "/shop/shoes", label: "Shoes" },
-              { path: "/shop/tshirts", label: "T-Shirt" },
-              { path: "/shop/shorts", label: "Shorts" },
-              { path: "/shop/pants", label: "Pants" },
-              { path: "/shop/socks", label: "Socks" },
+              { path: "/product/Shoes", label: "Shoes" },
+              { path: "/product/T-shirts", label: "T-Shirt" },
+              { path: "/product/Shorts", label: "Shorts" },
+              { path: "/product/Pants", label: "Pants" },
+              { path: "/product/Socks", label: "Socks" },
             ].map((item) => (
-              <a
+              <Link
                 key={item.path}
-                href={item.path}
+                to={item.path}
                 className="block px-3 py-2 text-base font-medium hover:bg-gray-100 rounded-md"
                 onClick={closeMobileMenu}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="block md:hidden px-4">
-            {/* <SignedOut> */}
-            <div className="flex items-center gap-4">
-              <a href="/sign-in">Sign In</a>
-              <a href="/sign-up">Sign Up</a>
-            </div>
-            {/* </SignedOut> */}
+            <SignedOut>
+              <div className="flex items-center gap-4">
+                <Link to="/sign-in">Sign In</Link>
+                <Link to="/sign-up">Sign Up</Link>
+              </div>
+            </SignedOut>
           </div>
         </div>
       )}
