@@ -23,7 +23,7 @@ function ImageInput({ onChange, value }) {
 
   return (
     <div className="grid w-full max-w-sm items-center gap-1.5">
-      <Input type="file" onChange={handleFileChange} />
+      <Input type="file" accept="image/png, image/jpeg" onChange={handleFileChange} />
     </div>
   );
 }
