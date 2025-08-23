@@ -1,78 +1,51 @@
-
-import { useGetAllCategoriesQuery, useGetAllProductsQuery } from "@/lib/api";
-import { useParams } from "react-router";
-import ProductSearchForm from "@/components/ProductSearchForm";
-
-function ShopPage() {
-  const {data: categories} = useGetAllCategoriesQuery();
-
-  console.log(categories);
-
-  return (
-    <main className="px-4 lg:px-16 min-h-screen py-8">
-      <h2 className="text-4xl font-bold">Shop</h2>
-      <div className="mt-4"></div>
-    </main>
-  );
-}
-
-export default ShopPage;
-
-
-
-//68a8b3413582d04f8ab34549
-
-
-
-
-
-
-
-/*import SimpleProductCard from "@/components/SimpleProductCard";
-;
-import { useGetProductsByCategoryQuery } from "@/lib/api";
-import { useGetAllCategoriesQuery } from "@/lib/api";
+import SimpleProductCard from "@/components/SimpleProductCard";
+import { useGetAllProductsQuery, useGetAllCategoriesQuery } from "@/lib/api";
 import { useParams } from "react-router";
 
-
 function ShopPage() {
-
-
-  const { category } = useParams();
+  const { category: categorySlug } = useParams(); // now this is the slug from URL
 
   const { data: categories = [] } = useGetAllCategoriesQuery();
 
-  const selectedCategory = categories.find((c) => c.name === category);
-  const categoryId = selectedCategory?.id;
+  // find category by slug instead of name
+  const selectedCategory = categories.find((c) => c.slug === categorySlug);
+  console.log(selectedCategory);
+  const categoryId = selectedCategory?._id; // use _id if that's what MongoDB returns
+
+  console.log(categoryId);
 
   const {
-    data: products,
+    data: products = [],
     isLoading,
     isError,
     error,
-  } = useGetProductsByCategoryQuery(categoryId, { skip: !categoryId });
+  } = useGetAllProductsQuery(categoryId);
+
+  console.log(products);
 
   if (isLoading) {
     return <p>Loading...</p>;
   }
 
-  //console.log(products);
-  
+  if (isError) {
+    return <p>Error: {error?.message || "Something went wrong"}</p>;
+  }
 
   return (
     <main>
       <h1>Shop Page</h1>
-       <p>{category}</p> 
-      <div>{isLoading ? "Loading" : "Done"}</div>
-      <div>{error}</div>
-      <div>
-        {products.map((product) => (
-          <SimpleProductCard key={product.id} product={product} />
-        ))}
+      <p>Category: {selectedCategory?.name || categorySlug}</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {products.length > 0 ? (
+          products.map((product) => (
+            <SimpleProductCard key={product._id} product={product} />
+          ))
+        ) : (
+          <p>No products found.</p>
+        )}
       </div>
-      <div>{JSON.stringify(products)}</div>
     </main>
   );
 }
 
-export default ShopPage;*/
+export default ShopPage;

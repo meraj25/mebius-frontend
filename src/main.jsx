@@ -16,6 +16,7 @@ import CheckoutPage from "./pages/checkout.page";
 import ProtectedLayout from "./layouts/protected.layout";
 import CreateProductPage from "./pages/create-product-page";
 import AdminProtectedLayout from "./layouts/admin-protected.layout";
+import SearchedProductPage from "./pages/searchedproduct.page";
 
 import { ClerkProvider } from "@clerk/clerk-react";
 
@@ -50,8 +51,10 @@ createRoot(document.getElementById("root")).render(
                 </Route>
               </Route>
             </Route>
+             <Route path="shop/products/:id" element={<SearchedProductPage />} />
             <Route path="/sign-up" element={<SignUpPage />} />
             <Route path="/sign-in" element={<SignInPage />} />
+            
           </Routes>
         </BrowserRouter>
       </Provider>

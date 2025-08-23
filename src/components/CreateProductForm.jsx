@@ -27,6 +27,7 @@ import {
 const createProductFormSchema = z.object({
   categoryId: z.string().min(1),
   name: z.string().min(1),
+  color: z.string().min(1),
   image: z.string().min(1),
   stock: z.number(),
   price: z.number().nonnegative(),
@@ -94,6 +95,19 @@ function CreateProductForm({ categories }) {
         />
         <FormField
           control={form.control}
+          name="color"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Product color</FormLabel>
+              <FormControl>
+                <Input placeholder="White" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="image"
           render={({ field }) => (
             <FormItem>
@@ -147,7 +161,7 @@ function CreateProductForm({ categories }) {
           )}
         />
         <div>
-          <Button type="submit">Create Product</Button>
+          <Button type="submit" className="cursor-pointer">Create Product</Button>
         </div>
       </form>
     </Form>

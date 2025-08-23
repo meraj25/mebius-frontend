@@ -1,3 +1,4 @@
+
 function HeroGrid() {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 lg:px-16 min-h-[60vh] md:min-h-[80vh] gap-4 mt-4">
