@@ -28,7 +28,10 @@ const createProductFormSchema = z.object({
   categoryId: z.string().min(1),
   name: z.string().min(1),
   color: z.string().min(1),
-  image: z.string().min(1),
+image: z
+  .instanceof(File)
+  .refine(file => file.size < 2_000_000, "Max 2MB file size"),
+
   stock: z.number(),
   price: z.number().nonnegative(),
 });
