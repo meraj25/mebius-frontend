@@ -29,7 +29,7 @@ export default function Navigation() {
   
           
          <div className=" flex items-center justify-between h-20">
-          <Link to="/" className="font-bold text-4xl m-8 ">
+          <Link to="/" className="font-bold text-2xl m-8 ">
             Mebius
           </Link>
 
@@ -64,7 +64,7 @@ export default function Navigation() {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className="font-medium text-xl hover:text-gray-600 "
+                  className="font-medium hover:text-gray-600 "
                 >
                   {item.label}
                 </Link>
@@ -72,7 +72,7 @@ export default function Navigation() {
             })}
           </nav>
 
-      <div className="hover:text-red-500 font-medium text-xl">
+      <div className="hover:text-red-500 font-medium">
             <Link to="/admin/products/create">Create Product</Link>
          
       </div>
