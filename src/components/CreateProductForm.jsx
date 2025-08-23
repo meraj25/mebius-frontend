@@ -28,7 +28,11 @@ const createProductFormSchema = z.object({
   categoryId: z.string().min(1),
   name: z.string().min(1),
   color: z.string().min(1),
-  image: z.string().min(1),
+  image: z
+    .any()
+    .refine((file) => file instanceof File || (file && file.length > 0), {
+      message: "Image is required",
+    }),
   stock: z.number(),
   price: z.number().nonnegative(),
 });
