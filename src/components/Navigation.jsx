@@ -4,6 +4,9 @@ import { Menu, X, ShoppingBag, Search, User } from "lucide-react";
 import { useSelector } from "react-redux";
 // import { useSelector } from "react-redux";
 import { SignedIn, UserButton, SignedOut } from "@clerk/clerk-react";
+import ProductSearchForm from "./ProductSearchForm";
+
+
 
 export default function Navigation() {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -17,35 +20,31 @@ export default function Navigation() {
     0
   );
 
-  // const calculateCartItems = () => {
-  //   const total = 0;
-  //   for (let i = 0; i < array.length; i++) {
-  //     const item = array[i];
-  //     total = total + item.quantity;
-  //   }
-  // };
 
   // Function href close mobile menu
   const closeMobileMenu = () => setIsMenuOpen(false);
 
   return (
     <header className="bg-white border-b border-gray-200 px-4 lg:px-16">
-      <div>
-        <div className="flex items-center justify-between h-20 px-4 ml-8">
-          {/* Logo */}
-          <Link to="/" className="font-bold text-3xl m-8 ">
+  
+          
+         <div className=" flex items-center justify-between h-20">
+          <Link to="/" className="font-bold text-4xl m-8 ">
             Mebius
           </Link>
 
+          <ProductSearchForm />
+       
+
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-24">
+          <nav className="hidden md:flex space-x-12">
             {[
               {
                 path: "/shop/shoes",
                 label: "Shoes",
               },
               {
-                path: "/shop/t-shirts",
+                path: "/shop/tshirts",
                 label: "T-Shirt",
               },
               {
@@ -65,34 +64,35 @@ export default function Navigation() {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className="font-medium hover:text-gray-600"
+                  className="font-medium text-xl hover:text-gray-600 "
                 >
                   {item.label}
                 </Link>
               );
             })}
           </nav>
-          <div>
-            <Link to="/admin/products/create">Create Product</Link>
-          </div>
 
+      <div className="hover:text-red-500 font-medium text-xl">
+            <Link to="/admin/products/create">Create Product</Link>
+         
+      </div>
           {/* Icons */}
-          <div className="flex items-center space-x-6 mr-6">
-            <button aria-label="Search" className="p-1">
-              <Search size={20} />
-            </button>
+          <div className="flex items-center space-x-6 ">
+            {/* Shopping Cart Icon with Item Count */}
             <Link
               to="/shop/cart"
               aria-label="Shopping Bag"
               className="p-1 relative"
             >
-              <ShoppingBag size={20} />
+              <ShoppingBag size={26} />
               <span className="absolute -top-1 -right-1 bg-black text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
                 {cartItemCount}
               </span>
             </Link>
             <SignedIn>
-              <UserButton />
+              
+                <UserButton size={36} />
+              
             </SignedIn>
             <div className="hidden md:block">
               <SignedOut>
@@ -112,8 +112,9 @@ export default function Navigation() {
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
-        </div>
-      </div>
+          </div>
+     
+  
 
       {/* Mobile Navigation */}
       {isMenuOpen && (

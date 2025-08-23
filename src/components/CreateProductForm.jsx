@@ -43,7 +43,7 @@ function CreateProductForm({ categories }) {
     try {
       console.log(values);
       
-      // await createProduct(values).unwrap();
+      await createProduct(values).unwrap();
     } catch (error) {
       console.log(error);
     }
@@ -53,7 +53,7 @@ function CreateProductForm({ categories }) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 mt-4 w-1/4"
+        className="space-y-8 mt-4 w-full max-w-lg bg-white rounded-2xl shadow-md p-8 flex flex-col gap-8"
       >
         <FormField
           control={form.control}

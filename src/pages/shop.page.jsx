@@ -1,4 +1,34 @@
-import SimpleProductCard from "@/components/SimpleProductCard";
+
+import { useGetAllCategoriesQuery, useGetAllProductsQuery } from "@/lib/api";
+import { useParams } from "react-router";
+import ProductSearchForm from "@/components/ProductSearchForm";
+
+function ShopPage() {
+  const {data: categories} = useGetAllCategoriesQuery();
+
+  console.log(categories);
+
+  return (
+    <main className="px-4 lg:px-16 min-h-screen py-8">
+      <h2 className="text-4xl font-bold">Shop</h2>
+      <div className="mt-4"></div>
+    </main>
+  );
+}
+
+export default ShopPage;
+
+
+
+//68a8b3413582d04f8ab34549
+
+
+
+
+
+
+
+/*import SimpleProductCard from "@/components/SimpleProductCard";
 ;
 import { useGetProductsByCategoryQuery } from "@/lib/api";
 import { useGetAllCategoriesQuery } from "@/lib/api";
@@ -45,4 +75,4 @@ function ShopPage() {
   );
 }
 
-export default ShopPage;
+export default ShopPage;*/

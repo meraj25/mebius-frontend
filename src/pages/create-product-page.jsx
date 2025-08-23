@@ -4,9 +4,15 @@ function CreateProductPage() {
 
     const { data: categories } = useGetAllCategoriesQuery();
 
+    console.log(categories);
+
   return (
-    <main className="px-16 min-h-screen py-8">
-      <h2 className="text-4xl font-bold">Create Product</h2>
+    <main className="min-h-screen flex flex-col items-center justify-center px-4 py-8">
+      <h2 className="text-4xl font-bold mb-8">Create Product</h2>
+      <br />
+      <br />
+      <br />
+
       <CreateProductForm categories={categories} />
     </main>
   );
