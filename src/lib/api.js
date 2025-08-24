@@ -25,13 +25,28 @@ export const Api = createApi({
     },
   }),
   endpoints: (build) => ({
-    getAllProducts: build.query({
+    
+  getAllProducts: build.query({
   query: (categoryId) => {
     if (!categoryId) return `/products`;
 
 
     return `/products?${categoryId}`;
   },
+    query: (color) => {
+    if (!color) return `/products`;
+
+
+    return `/products?${color}`;
+    
+  },
+   query: (priceorder) => {
+    if (!priceorder) return `/products`;
+
+
+    return `/products?sort=price&order=${priceorder}`;
+
+  }
 }),
     getProductsBySearch: build.query({
       query: (query) => `/products/search?search=${query}`,

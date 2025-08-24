@@ -40,6 +40,10 @@ export default function Navigation() {
           <nav className="hidden md:flex space-x-12">
             {[
               {
+                path: "/shop",
+                label: "Shop",
+              },
+              {
                 path: "/shop/shoes",
                 label: "Shoes",
               },
