@@ -155,6 +155,19 @@ function CreateProductForm({ categories }) {
                     field.onChange(parseFloat(e.target.value) || 0);
                   }}
                 />
+          <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Product Name</FormLabel>
+              <FormControl>
+                <Input placeholder="Denim" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
               </FormControl>
               <FormMessage />
             </FormItem>
