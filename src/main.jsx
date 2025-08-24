@@ -56,6 +56,8 @@ createRoot(document.getElementById("root")).render(
                 </Route>
               </Route>
             </Route>
+
+            <Route element={<RootLayout />}>
              <Route path="shop/products/:id" element={<SearchedProductPage />} />
              <Route path="/all" element={<Shopping />} />
             <Route path="/sign-up" element={<SignUpPage />} />
@@ -65,7 +67,10 @@ createRoot(document.getElementById("root")).render(
             </Route>
             <Route element={<ProtectedLayout />}>
             <Route element={<AdminProtectedLayout />}>
+            
               <Route path="/admin/orders" element={<OrdersPage />} />
+            
+            </Route>
             </Route>
             </Route>
 
