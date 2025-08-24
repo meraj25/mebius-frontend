@@ -40,7 +40,7 @@ export default function Navigation() {
           <nav className="hidden md:flex space-x-12">
             {[
               {
-                path: "/shop",
+                path: "/all",
                 label: "Shop",
               },
               {
