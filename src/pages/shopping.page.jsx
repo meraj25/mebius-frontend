@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Popover,PopoverContent,PopoverTrigger } from "@/components/ui/popover";
-import { Button } from "./ui/button";
+import { Button } from "@/components/ui/button";
 import { useGetAllProductsQuery } from "@/lib/api";
-import SimpleProductCard from "./SimpleProductCard";
+import SimpleProductCard from "@/components/SimpleProductCard";
 
 function Shopping() {
   // Local state for filter inputs
