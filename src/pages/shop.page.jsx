@@ -4,14 +4,15 @@ import { useParams } from "react-router";
 
 function ShopPage() {
   const { category: categorySlug } = useParams(); 
+
   const { data: categories = [] } = useGetAllCategoriesQuery();
 
+  
   const selectedCategory = categories.find((c) => c.slug === categorySlug);
+  console.log(selectedCategory);
   const categoryId = selectedCategory?._id; 
 
-  console.log("Category Slug:", categorySlug);
-  console.log("Selected Category:", selectedCategory);
-  console.log("Category ID:", categoryId);
+  console.log(categoryId);
 
   const {
     data: products = [],
@@ -20,7 +21,7 @@ function ShopPage() {
     error,
   } = useGetAllProductsQuery(categoryId);
 
-  console.log("Products:", products);
+  console.log(products);
 
   if (isLoading) {
     return <p>Loading...</p>;
