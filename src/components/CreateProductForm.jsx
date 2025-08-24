@@ -23,12 +23,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { de } from "zod/v4/locales";
 
 const createProductFormSchema = z.object({
   categoryId: z.string().min(1),
   name: z.string().min(1),
-  description: z.string().min(1),
   color: z.string().min(1),
   image: z.string().min(1),
   stock: z.number(),
@@ -95,7 +93,6 @@ function CreateProductForm({ categories }) {
             </FormItem>
           )}
         />
-        
         <FormField
           control={form.control}
           name="color"
@@ -116,12 +113,7 @@ function CreateProductForm({ categories }) {
             <FormItem>
               <FormLabel>Image</FormLabel>
               <FormControl>
-                <ImageInput
-                  type="file"
-                  accept="image/*"
-                  onChange={field.onChange}
-                  value={field.value}
-                />
+                <ImageInput onChange={field.onChange} value={field.value} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -163,19 +155,6 @@ function CreateProductForm({ categories }) {
                     field.onChange(parseFloat(e.target.value) || 0);
                   }}
                 />
-              <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Product Description</FormLabel>
-              <FormControl>
-                <Input placeholder="Description" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
               </FormControl>
               <FormMessage />
             </FormItem>

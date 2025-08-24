@@ -52,6 +52,7 @@ createRoot(document.getElementById("root")).render(
                     path="/admin/products/create"
                     element={<CreateProductPage />}
                   />
+
                 </Route>
               </Route>
             </Route>
