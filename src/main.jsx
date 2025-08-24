@@ -53,7 +53,7 @@ createRoot(document.getElementById("root")).render(
               </Route>
             </Route>
              <Route path="shop/products/:id" element={<SearchedProductPage />} />
-             <Route path="shop" element={<Shopping />} />
+             <Route path="/shop" element={<Shopping />} />
             <Route path="/sign-up" element={<SignUpPage />} />
             <Route path="/sign-in" element={<SignInPage />} />
             
