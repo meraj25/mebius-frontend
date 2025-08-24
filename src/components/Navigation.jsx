@@ -34,7 +34,7 @@ export default function Navigation() {
        
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-12">
+          <nav className="hidden md:flex space-x-10 ">
             {[
               {
                 path: "/all",
@@ -77,7 +77,7 @@ export default function Navigation() {
             })}
           </nav>
 
-      <nav className="hidden md:flex space-x-6 ml-8">
+      <nav className="hidden md:flex space-x-8 ml-20">
   {[
     {
       path: "/admin/products/create",
@@ -95,7 +95,7 @@ export default function Navigation() {
     <Link
       key={item.path}
       to={item.path}
-      className="font-medium hover:text-red-500 hidden md:flex space-x-4 ml-8"
+      className="font-medium hover:text-red-500"
     >
       {item.label}
     </Link>
