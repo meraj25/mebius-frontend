@@ -63,6 +63,10 @@ export default function Navigation() {
                 path: "/shop/socks",
                 label: "Socks",
               },
+              {
+                path: "/orders",
+                label: "MyOrders",
+              },
             ].map((item) => {
               return (
                 <Link
@@ -76,10 +80,30 @@ export default function Navigation() {
             })}
           </nav>
 
-      <div className="hover:text-red-500 font-medium">
-            <Link to="/admin/products/create">Create Product</Link>
-         
-      </div>
+      <nav className="hidden md:flex space-x-12 ml-8">
+  {[
+    {
+      path: "/admin/products/create",
+      label: "Create Product",
+    },
+    {
+      path: "/admin/orders",
+      label: "View Orders",
+    },
+    {
+      path: "/admin/sales",
+      label: "Sales",
+    },
+  ].map((item) => (
+    <Link
+      key={item.path}
+      to={item.path}
+      className="font-medium hover:text-red-500"
+    >
+      {item.label}
+    </Link>
+  ))}
+</nav>
           {/* Icons */}
           <div className="flex items-center space-x-6 ">
             {/* Shopping Cart Icon with Item Count */}

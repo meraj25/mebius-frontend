@@ -18,6 +18,8 @@ import CreateProductPage from "./pages/create-product-page";
 import AdminProtectedLayout from "./layouts/admin-protected.layout";
 import SearchedProductPage from "./pages/searchedproduct.page";
 import Shopping from "./pages/shopping.page";
+import OrdersPage from "./pages/orders.page";
+import MyOrdersPage from "./pages/myorders.page";
 
 import { ClerkProvider } from "@clerk/clerk-react";
 
@@ -41,6 +43,7 @@ createRoot(document.getElementById("root")).render(
                 <Route path="cart" element={<CartPage />} />
                 <Route element={<ProtectedLayout />}>
                   <Route path="checkout" element={<CheckoutPage />} />
+                  
                 </Route>
               </Route>
               <Route element={<ProtectedLayout />}>
@@ -56,11 +59,24 @@ createRoot(document.getElementById("root")).render(
              <Route path="/all" element={<Shopping />} />
             <Route path="/sign-up" element={<SignUpPage />} />
             <Route path="/sign-in" element={<SignInPage />} />
-            
+            <Route element={<ProtectedLayout />}>
+              <Route path="/orders" element={<MyOrdersPage />} />
+            </Route>
+            <Route element={<ProtectedLayout />}>
+            <Route element={<AdminProtectedLayout />}>
+              <Route path="/admin/orders" element={<OrdersPage />} />
+            </Route>
+            </Route>
+
           </Routes>
         </BrowserRouter>
       </Provider>
     </ClerkProvider>
   </StrictMode>
 );
-//
+//import Sales from "./pages/sales.page";
+//<Route path="/admin/sales" element={<Sales />} />
+//import OrdersPage from "./pages/orders.page";
+//import MyOrdersPage from "./pages/myorders.page";
+//<Route path="/orders" element={<MyOrdersPage />} />
+//<Route path="/admin/orders" element={<OrdersPage />} />

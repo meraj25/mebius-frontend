@@ -25,7 +25,7 @@ export const Api = createApi({
     },
   }),
   endpoints: (build) => ({
-    
+
   getAllProducts: build.query({
   query: (categoryId) => {
     if (!categoryId) return `/products`;
@@ -48,9 +48,21 @@ export const Api = createApi({
 
   }
 }),
+getAllOrders: build.query({
+  query: (userId) => {
+    if (!userId) return `/orders`;
+
+
+    return `/products?${userId}`;
+  },
+}),
+
+
+
     getProductsBySearch: build.query({
       query: (query) => `/products/search?search=${query}`,
     }),
+    
 
     getProductsById: build.query({
       query: (productId) => `/products/${productId}`,
@@ -77,6 +89,9 @@ export const Api = createApi({
    getCheckoutSessionStatus: build.query({
       query: (sessionId) => `/payments/session-status?session_id=${sessionId}`,
     }),
+    
+    
+
   }),
 });
 
@@ -88,6 +103,7 @@ export const {
   useGetCheckoutSessionStatusQuery,
   useCreateProductMutation,
   useGetAllCategoriesQuery,
-  useGetProductsByIdQuery
+  useGetProductsByIdQuery,
+  useGetAllOrdersQuery
 
 } = Api;
