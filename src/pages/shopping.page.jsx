@@ -14,12 +14,24 @@ function Shopping() {
   const [appliedPriceOrder, setAppliedPriceOrder] = useState("asc");
 
   // Query uses applied filters
-  const { data: products = [], isLoading } = useGetAllProductsQuery({
-    color: appliedColor,
-    priceOrder: appliedPriceOrder,
-  });
+  const {
+    data: products = [],
+    isLoading,
+    isError,
+    error,
+  } = useGetAllProductsQuery( {
+ color: appliedColor,
+ priceOrder: appliedPriceOrder,
+ });
 
-  if (isLoading) return <div>Loading...</div>;
+if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error: {error?.message || "Something went wrong"}</p>;
+  }
+
 
   // Handler for Apply Filters button
   const handleApplyFilters = () => {
@@ -72,3 +84,4 @@ function Shopping() {
 }
 
 export default Shopping;
+
