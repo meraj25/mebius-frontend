@@ -41,12 +41,14 @@ if (isLoading) {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold content-center">Shopping Page</h1>
+      <h1 className="text-2xl font-bold text-center mt-8 mb-4">Shopping Page</h1>
       <Popover>
         <PopoverTrigger>
+            <div className="mt-4 mb-4">
             <Button>
             Filter
             </Button>
+            </div>
         </PopoverTrigger>
         <PopoverContent>
           <div className="flex flex-col gap-4">
