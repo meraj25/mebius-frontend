@@ -33,7 +33,7 @@ function ShopPage() {
 
   return (
     <main>
-      <h1 className="text-2xl font-bold text-center mt-8 mb-4">Shop Page-{selectedCategory?.name || categorySlug}</h1>
+      <h1 className="text-2xl font-bold text-center mt-8 mb-4">{selectedCategory?.name || categorySlug}</h1>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.length > 0 ? (
