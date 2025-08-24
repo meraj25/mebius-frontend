@@ -41,9 +41,13 @@ if (isLoading) {
 
   return (
     <div>
-      <h1>Shopping Page</h1>
+      <h1 className="text-2xl font-bold content-center">Shopping Page</h1>
       <Popover>
-        <PopoverTrigger>Filter</PopoverTrigger>
+        <PopoverTrigger>
+            <Button>
+            Filter
+            </Button>
+        </PopoverTrigger>
         <PopoverContent>
           <div className="flex flex-col gap-4">
             {/* Color Input */}
@@ -73,6 +77,11 @@ if (isLoading) {
           </div>
         </PopoverContent>
       </Popover>
+
+      <br />
+      <br />
+      <br />
+
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product) => (
