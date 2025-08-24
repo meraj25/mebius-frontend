@@ -31,7 +31,7 @@ export const Api = createApi({
     if (!categoryId) return `/products`;
 
 
-    return `/products?${categoryId}`;
+    return `/products?categoryId=${categoryId}`;
   },
     query: (color) => {
     if (!color) return `/products`;

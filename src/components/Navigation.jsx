@@ -46,7 +46,7 @@ export default function Navigation() {
               },
               {
                 path: "/shop/tshirts",
-                label: "T-Shirt",
+                label: "T-Shirts",
               },
               {
                 path: "/shop/shorts",
