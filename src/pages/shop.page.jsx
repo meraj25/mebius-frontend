@@ -3,14 +3,14 @@ import { useGetAllProductsQuery, useGetAllCategoriesQuery } from "@/lib/api";
 import { useParams } from "react-router";
 
 function ShopPage() {
-  const { category: categorySlug } = useParams(); // now this is the slug from URL
+  const { category: categorySlug } = useParams(); 
 
   const { data: categories = [] } = useGetAllCategoriesQuery();
 
-  // find category by slug instead of name
+  
   const selectedCategory = categories.find((c) => c.slug === categorySlug);
   console.log(selectedCategory);
-  const categoryId = selectedCategory?._id; // use _id if that's what MongoDB returns
+  const categoryId = selectedCategory?._id; 
 
   console.log(categoryId);
 

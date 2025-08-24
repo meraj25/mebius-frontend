@@ -13,8 +13,7 @@ function ImageInput({ onChange, value }) {
       if (!file) {
         return;
       }
-      const publicUrl = await putImage({ file }); //! File will be uploaded to a bucket and the url will be returned
-      //   const url = "https://via.placeholder.com/150";
+      const publicUrl = await putImage({ file }); 
 
       console.log(publicUrl);
       onChange(publicUrl);

@@ -5,7 +5,7 @@ function MyOrdersPage() {
   const { user } = useUser();
   const userId = user?.id;
 
-  // Fetch orders for this user
+
   const {
     data: orders = [],
     isLoading,

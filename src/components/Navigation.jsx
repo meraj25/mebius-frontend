@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Menu, X, ShoppingBag, Search, User } from "lucide-react";
 import { useSelector } from "react-redux";
-// import { useSelector } from "react-redux";
 import { SignedIn, UserButton, SignedOut } from "@clerk/clerk-react";
 import ProductSearchForm from "./ProductSearchForm";
 
@@ -12,16 +11,14 @@ export default function Navigation() {
   const cartItems = useSelector((state) => state.cart.cartItems);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // const cartItems = useSelector((state) => state.cart.value);
-
-  // Calculate total quantity of items in cart
+  
   const cartItemCount = cartItems.reduce(
     (total, item) => total + item.quantity,
     0
   );
 
 
-  // Function href close mobile menu
+
   const closeMobileMenu = () => setIsMenuOpen(false);
 
   return (
@@ -80,7 +77,7 @@ export default function Navigation() {
             })}
           </nav>
 
-      <nav className="hidden md:flex space-x-12 ml-8">
+      <nav className="hidden md:flex space-x-6 ml-8">
   {[
     {
       path: "/admin/products/create",
@@ -98,7 +95,7 @@ export default function Navigation() {
     <Link
       key={item.path}
       to={item.path}
-      className="font-medium hover:text-red-500"
+      className="font-medium hover:text-red-500 hidden md:flex space-x-4 ml-8"
     >
       {item.label}
     </Link>

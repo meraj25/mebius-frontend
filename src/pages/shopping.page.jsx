@@ -5,15 +5,15 @@ import { useGetAllProductsQuery } from "@/lib/api";
 import SimpleProductCard from "@/components/SimpleProductCard";
 
 function Shopping() {
-  // Local state for filter inputs
+ 
   const [colorInput, setColorInput] = useState("");
   const [priceOrderInput, setPriceOrderInput] = useState("asc");
 
-  // State for applied filters
+ 
   const [appliedColor, setAppliedColor] = useState("");
   const [appliedPriceOrder, setAppliedPriceOrder] = useState("asc");
 
-  // Query uses applied filters
+ 
   const {
     data: products = [],
     isLoading,
@@ -33,7 +33,7 @@ if (isLoading) {
   }
 
 
-  // Handler for Apply Filters button
+  
   const handleApplyFilters = () => {
     setAppliedColor(colorInput);
     setAppliedPriceOrder(priceOrderInput);

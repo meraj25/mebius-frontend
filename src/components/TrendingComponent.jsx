@@ -2,11 +2,11 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 
 function TestComponent() {
-  // const [user, setUser] = useState({ name: "John", age: 20 });
+ 
   const [numbers, setNumbers] = useState([1, 2, 3, 4, 5]);
 
   const handleClick = () => {
-    // setUser({...user, age:25});
+    
     setNumbers([...numbers, 6]);
   };
 
