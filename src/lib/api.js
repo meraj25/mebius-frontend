@@ -32,20 +32,6 @@ export const Api = createApi({
 
 
     return `/products?categoryId=${categoryId}`;
-  },
-    query: (color) => {
-    if (!color) return `/products`;
-
-
-    return `/products?${color}`;
-    
-  },
-   query: (priceorder) => {
-    if (!priceorder) return `/products`;
-
-
-    return `/products?sort=price&order=${priceorder}`;
-
   }
 }),
 getAllOrders: build.query({
@@ -107,3 +93,18 @@ export const {
   useGetAllOrdersQuery
 
 } = Api;
+/*
+    query: (color) => {
+    if (!color) return `/products`;
+
+
+    return `/products?${color}`;
+    
+  },
+   query: (priceorder) => {
+    if (!priceorder) return `/products`;
+
+
+    return `/products?sort=price&order=${priceorder}`;
+
+  }*/
