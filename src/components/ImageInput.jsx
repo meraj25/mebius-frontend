@@ -3,6 +3,8 @@ import { putImage } from "@/lib/product";
 
 function ImageInput({ onChange, value }) {
   const handleFileChange = async (e) => {
+
+    console.log(e.target.files);
     try {
       if (!e.target.files) {
         return;

@@ -28,10 +28,7 @@ const createProductFormSchema = z.object({
   categoryId: z.string().min(1),
   name: z.string().min(1),
   color: z.string().min(1),
-image: z
-  .instanceof(File)
-  .refine(file => file.size < 2_000_000, "Max 2MB file size"),
-
+  image: z.string().min(1),
   stock: z.number(),
   price: z.number().nonnegative(),
 });
@@ -116,7 +113,12 @@ function CreateProductForm({ categories }) {
             <FormItem>
               <FormLabel>Image</FormLabel>
               <FormControl>
-                <ImageInput onChange={field.onChange} value={field.value} />
+                <ImageInput
+                  type="file"
+                  accept="image/*"
+                  onChange={field.onChange}
+                  value={field.value}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
