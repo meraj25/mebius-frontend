@@ -28,11 +28,12 @@ export const Api = createApi({
 
   getAllProducts: build.query({
   query: (categoryId) => {
-    const url = categoryId ? `/products?categoryId=${categoryId}` : `/products`;
-    console.log("API Query URL:", url); // Log the URL
-    return url;
-  },
-}),
+    if (!categoryId) return `/products`;
+
+
+    return `/products?categoryId=${categoryId}`;
+    
+  }
 }),
 getAllOrders: build.query({
   query: (userId) => {
@@ -78,8 +79,8 @@ getAllOrders: build.query({
     
     
 
-  });
-
+  }),
+});
 
 
 export const {
