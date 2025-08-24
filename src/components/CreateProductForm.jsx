@@ -31,6 +31,7 @@ const createProductFormSchema = z.object({
   image: z.string().min(1),
   stock: z.number(),
   price: z.number().nonnegative(),
+  description: z.string().min(1),
 });
 
 function CreateProductForm({ categories }) {
@@ -108,6 +109,19 @@ function CreateProductForm({ categories }) {
         />
         <FormField
           control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Product Description</FormLabel>
+              <FormControl>
+                <Input placeholder="Description" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
           name="image"
           render={({ field }) => (
             <FormItem>
@@ -155,19 +169,7 @@ function CreateProductForm({ categories }) {
                     field.onChange(parseFloat(e.target.value) || 0);
                   }}
                 />
-          <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Product Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Denim" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+          
               </FormControl>
               <FormMessage />
             </FormItem>
