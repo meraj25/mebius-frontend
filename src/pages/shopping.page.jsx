@@ -2,6 +2,13 @@ import { useState } from "react";
 import { useGetAllProductsQuery } from "@/lib/api";
 import SimpleProductCard from "@/components/SimpleProductCard";
 import { useGetAllColorsQuery } from "@/lib/api";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "./ui/select";
 
 function Shopping() {
 
