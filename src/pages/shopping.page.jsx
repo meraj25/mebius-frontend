@@ -5,7 +5,7 @@ import { useGetAllColorsQuery } from "@/lib/api";
 
 function Shopping() {
 
-const [ selectedColor, setSelectedColor ] = useState("Color");
+const [ selectedColor, setSelectedColor ] = useState("");
   const {data : colors = []} = useGetAllColorsQuery();
   const {data : products = [],
     isLoading,
