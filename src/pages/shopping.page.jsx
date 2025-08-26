@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { Popover,PopoverContent,PopoverTrigger } from "@/components/ui/popover";
-import { Button } from "@/components/ui/button";
 import { useGetAllProductsQuery } from "@/lib/api";
 import SimpleProductCard from "@/components/SimpleProductCard";
 import { useGetAllColorsQuery } from "@/lib/api";
 
 function Shopping() {
 
-const { selectedColor, setSelectedColor } = useState("Color");
+const [ selectedColor, setSelectedColor ] = useState("Color");
   const {data : colors = []} = useGetAllColorsQuery();
   const {data : products = [],
     isLoading,
@@ -26,21 +24,15 @@ const { selectedColor, setSelectedColor } = useState("Color");
     ? products.filter((p) => p.color === selectedColor)
     : products;
 
-  const onClick = () => {
-    return(
-        <div>{filteredProducts.map((product) => (
-        <SimpleProductCard key={product._id} product={product} />
-      ))}</div>
-    )
-  };
-
+ 
   return (
     <div>
       <h2>Filter By: </h2>
-      <div>
-      <Select>
+   
+      <Select
         value={selectedColor}
         onValueChange={(value) => setSelectedColor(value)}
+        >
         <SelectTrigger>
           <SelectValue placeholder="Select a color" />
         </SelectTrigger>
@@ -52,17 +44,15 @@ const { selectedColor, setSelectedColor } = useState("Color");
           ))}
         </SelectContent>
       </Select>
+
+
+
+     <div>{filteredProducts.map((product) => (
+        <SimpleProductCard key={product._id} product={product} />
+      ))}
       </div>
 
-      <div><Button onClick={onClick}>Apply</Button></div>
-
-  
-
     </div>
-
-
-    
-
     
   );
 }
