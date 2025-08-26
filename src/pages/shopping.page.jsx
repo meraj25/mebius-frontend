@@ -19,7 +19,7 @@ const [ selectedColor, setSelectedColor ] = useState("");
   if (isError) {
     return <p>Error: {error?.message || "Something went wrong"}</p>;
   }
-
+  console.log(selectedColor);
   const filteredProducts = selectedColor
     ? products.filter((p) => p.color === selectedColor)
     : products;
@@ -38,7 +38,7 @@ const [ selectedColor, setSelectedColor ] = useState("");
         </SelectTrigger>
         <SelectContent>
           {colors.map((color) => (
-            <SelectItem key={color.id} value={color.id}>
+            <SelectItem key={color._id} value={color._id}>
               {color.name}
             </SelectItem>
           ))}
