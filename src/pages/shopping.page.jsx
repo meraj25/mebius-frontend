@@ -13,6 +13,8 @@ import {
 function Shopping() {
 
 const [ selectedColor, setSelectedColor ] = useState("");
+ const [sortOrder, setSortOrder] = useState("");
+
   const {data : colors = []} = useGetAllColorsQuery();
   const {data : products = [],
     isLoading,
@@ -30,6 +32,12 @@ const [ selectedColor, setSelectedColor ] = useState("");
   const filteredProducts = selectedColor
     ? products.filter((p) => p.color === selectedColor)
     : products;
+
+     if (sortOrder === "asc") {
+    filteredProducts = [...filteredProducts].sort((a, b) => a.price - b.price);
+  } else if (sortOrder === "desc") {
+    filteredProducts = [...filteredProducts].sort((a, b) => b.price - a.price);
+  }
 
  
   return (
@@ -51,7 +59,17 @@ const [ selectedColor, setSelectedColor ] = useState("");
           ))}
         </SelectContent>
       </Select>
-
+      
+ <h2 className="mt-4">Sort By Price: </h2>
+      <Select value={sortOrder} onValueChange={(value) => setSortOrder(value)}>
+        <SelectTrigger>
+          <SelectValue placeholder="Select order" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="asc">Price: Low to High</SelectItem>
+          <SelectItem value="desc">Price: High to Low</SelectItem>
+        </SelectContent>
+      </Select>
 
 
      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
