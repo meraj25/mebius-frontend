@@ -59,6 +59,9 @@ getAllOrders: build.query({
       query: () => `/categories`,
       
     }),
+    getAllColors: build.query({
+      query: () => `/colors`,
+    }),
     createProduct: build.mutation({
       query: (product) => ({
         url: "/products",
@@ -91,7 +94,8 @@ export const {
   useCreateProductMutation,
   useGetAllCategoriesQuery,
   useGetProductsByIdQuery,
-  useGetAllOrdersQuery
+  useGetAllOrdersQuery,
+  useGetAllColorsQuery
 
 } = Api;
 /*

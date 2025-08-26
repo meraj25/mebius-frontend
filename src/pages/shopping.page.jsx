@@ -3,28 +3,18 @@ import { Popover,PopoverContent,PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { useGetAllProductsQuery } from "@/lib/api";
 import SimpleProductCard from "@/components/SimpleProductCard";
+import { useGetAllColorsQuery } from "@/lib/api";
 
 function Shopping() {
- 
-  const [colorInput, setColorInput] = useState("");
-  const [priceOrderInput, setPriceOrderInput] = useState("asc");
 
- 
-  const [appliedColor, setAppliedColor] = useState("");
-  const [appliedPriceOrder, setAppliedPriceOrder] = useState("asc");
-
- 
-  const {
-    data: products = [],
+const { selectedColor, setSelectedColor } = useState("Color");
+  const {data : colors = []} = useGetAllColorsQuery();
+  const {data : products = [],
     isLoading,
     isError,
-    error,
-  } = useGetAllProductsQuery( {
- color: appliedColor,
- priceOrder: appliedPriceOrder,
- });
-
-if (isLoading) {
+    error
+  } = useGetAllProductsQuery();
+  if (isLoading) {
     return <p>Loading...</p>;
   }
 
@@ -32,65 +22,48 @@ if (isLoading) {
     return <p>Error: {error?.message || "Something went wrong"}</p>;
   }
 
+  const filteredProducts = selectedColor
+    ? products.filter((p) => p.color === selectedColor)
+    : products;
 
-  
-  const handleApplyFilters = () => {
-    setAppliedColor(colorInput);
-    setAppliedPriceOrder(priceOrderInput);
+  const onClick = () => {
+    return(
+        <div>{filteredProducts.map((product) => (
+        <SimpleProductCard key={product._id} product={product} />
+      ))}</div>
+    )
   };
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-center mt-8 mb-4">ALL PRODUCTS</h1>
-      <Popover>
-        <PopoverTrigger>
-            <div className="mt-4 mb-4 flex justify-end">
-    <Button className="px-8 py-3 text-lg">
-      Filter
-    </Button>
-  </div>
-        </PopoverTrigger>
-        <PopoverContent>
-          <div className="flex flex-col gap-4">
-            {/* Color Input */}
-            <label className="font-medium">
-              Product Color:
-              <input
-                type="text"
-                value={colorInput}
-                onChange={(e) => setColorInput(e.target.value)}
-                placeholder="Enter color"
-                className="border rounded px-2 py-1 mt-1 w-full"
-              />
-            </label>
-            {/* Price Order Select */}
-            <label className="font-medium">
-              Price Order:
-              <select
-                value={priceOrderInput}
-                onChange={(e) => setPriceOrderInput(e.target.value)}
-                className="border rounded px-2 py-1 mt-1 w-full"
-              >
-                <option value="asc">Ascending</option>
-                <option value="desc">Descending</option>
-              </select>
-            </label>
-            <Button onClick={handleApplyFilters}>Apply Filters</Button>
-          </div>
-        </PopoverContent>
-      </Popover>
-
-      <br />
-      <br />
-      <br />
-
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
-          <SimpleProductCard key={product._id} product={product} />
-        ))}
+      <h2>Filter By: </h2>
+      <div>
+      <Select>
+        value={selectedColor}
+        onValueChange={(value) => setSelectedColor(value)}
+        <SelectTrigger>
+          <SelectValue placeholder="Select a color" />
+        </SelectTrigger>
+        <SelectContent>
+          {colors.map((color) => (
+            <SelectItem key={color.id} value={color.id}>
+              {color.name}
+            </SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
       </div>
+
+      <div><Button onClick={onClick}>Apply</Button></div>
+
+  
+
     </div>
+
+
+    
+
+    
   );
 }
 
