@@ -29,7 +29,7 @@ const [ selectedColor, setSelectedColor ] = useState("");
     return <p>Error: {error?.message || "Something went wrong"}</p>;
   }
   console.log(selectedColor);
-  const filteredProducts = selectedColor
+  let filteredProducts = selectedColor
     ? products.filter((p) => p.color === selectedColor)
     : products;
 
@@ -61,7 +61,8 @@ const [ selectedColor, setSelectedColor ] = useState("");
       </Select>
       
  <h2 className="mt-4">Sort By Price: </h2>
-      <Select value={sortOrder} onValueChange={(value) => setSortOrder(value)}>
+      <Select value={sortOrder} 
+      onValueChange={(value) => setSortOrder(value)}>
         <SelectTrigger>
           <SelectValue placeholder="Select order" />
         </SelectTrigger>
