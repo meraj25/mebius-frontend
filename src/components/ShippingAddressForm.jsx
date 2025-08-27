@@ -55,7 +55,7 @@ function ShippingAddressForm() {
   }
 
   return (
-    <div>
+
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
@@ -120,7 +120,7 @@ function ShippingAddressForm() {
       </form>
     </Form>
     
-    </div>
+  
   );
 }
 
