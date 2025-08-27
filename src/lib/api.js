@@ -80,7 +80,14 @@ getAllOrders: build.query({
       query: (sessionId) => `/payments/session-status?session_id=${sessionId}`,
     }),
     
-    
+    createCheckoutSession: build.mutation({
+  query: (orderId) => ({
+    url: "/payments/create-checkout-session",
+    method: "POST",
+    body: { orderId },
+  }),
+}),
+
 
   }),
 });
@@ -95,7 +102,8 @@ export const {
   useGetAllCategoriesQuery,
   useGetProductsByIdQuery,
   useGetAllOrdersQuery,
-  useGetAllColorsQuery
+  useGetAllColorsQuery,
+  useCreateCheckoutSessionMutation
 
 } = Api;
 /*
