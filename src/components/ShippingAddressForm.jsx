@@ -52,6 +52,7 @@ function ShippingAddressForm() {
       }).unwrap();
        
        setOrderId(result.orderId);
+       console.log(orderId);
      
     } catch (error) {
       console.log(error);
