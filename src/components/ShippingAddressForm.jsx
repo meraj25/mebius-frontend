@@ -49,6 +49,8 @@ function ShippingAddressForm() {
           quantity: item.quantity,
         })),
       }).unwrap();
+       
+       setOrderId(result.orderId);
      
     } catch (error) {
       console.log(error);
