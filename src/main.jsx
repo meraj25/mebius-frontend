@@ -43,7 +43,7 @@ createRoot(document.getElementById("root")).render(
                 <Route path="cart" element={<CartPage />} />
                 <Route element={<ProtectedLayout />}>
                   <Route path="checkout" element={<CheckoutPage />} />
-                  
+                  <Route path="payment" element={<PaymentPage />} />
                 </Route>
               </Route>
               <Route element={<ProtectedLayout />}>
