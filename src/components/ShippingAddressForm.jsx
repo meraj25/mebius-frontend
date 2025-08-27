@@ -51,8 +51,8 @@ function ShippingAddressForm() {
         })),
       }).unwrap();
        
-       setOrderId(result.orderId);
-       console.log(orderId);
+       const orderId = result.orderId; // must match backend response
+      navigate(`/shop/payments?orderId=${orderId}`);
      
     } catch (error) {
       console.log(error);
