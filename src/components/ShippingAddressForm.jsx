@@ -42,22 +42,22 @@ function ShippingAddressForm() {
   console.log(cart);
 
   async function onSubmit(values) {
-    try {
-      await createOrder({
-        shippingAddress: values,
-        orderItems: cart.map((item) => ({
-          productId: item.product._id,
-          quantity: item.quantity,
-        })),
-      }).unwrap();
-        console.log("Order created successfully:", result);
-       const orderId = result.order._id; // must match backend response
-      navigate(`/shop/payments?orderId=${orderId}`);
-     
-    } catch (error) {
-      console.log(error);
-    }
+  try {
+    const result = await createOrder({
+      shippingAddress: values,
+      orderItems: cart.map((item) => ({
+        productId: item.product._id,
+        quantity: item.quantity,
+      })),
+    }).unwrap();
+
+    console.log("Order created successfully:", result);
+    const orderId = result.order._id; // must match backend response
+    navigate(`/shop/payments?orderId=${orderId}`);
+  } catch (error) {
+    console.log(error);
   }
+}
 
   return (
 
