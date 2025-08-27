@@ -117,7 +117,9 @@ function ShippingAddressForm() {
         />
         <div>
           <Button asChild type="submit"> 
-          <Link to="/shop/payment">Proceed to Payments</Link>
+          <Link to={`/shop/payment?orderId=${orderId}`}>
+           Proceed to Payments
+          </Link>
           </Button>
         </div>
       </form>
