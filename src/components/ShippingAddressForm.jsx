@@ -50,8 +50,8 @@ function ShippingAddressForm() {
           quantity: item.quantity,
         })),
       }).unwrap();
-       
-       const orderId = result.orderId; // must match backend response
+        console.log("Order created successfully:", result);
+       const orderId = result.order._id; // must match backend response
       navigate(`/shop/payments?orderId=${orderId}`);
      
     } catch (error) {
