@@ -119,7 +119,7 @@ function ShippingAddressForm() {
         </div>
       </form>
     </Form>
-     {orderId && <PaymentForm orderId={orderId} />}
+    
     </div>
   );
 }
