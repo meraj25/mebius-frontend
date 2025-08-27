@@ -20,6 +20,7 @@ import SearchedProductPage from "./pages/searchedproduct.page";
 import Shopping from "./pages/shopping.page";
 import OrdersPage from "./pages/orders.page";
 import MyOrdersPage from "./pages/myorders.page";
+import PaymentPage from "./pages/payment.page";
 
 import { ClerkProvider } from "@clerk/clerk-react";
 
