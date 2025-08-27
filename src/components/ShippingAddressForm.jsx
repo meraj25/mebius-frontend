@@ -35,7 +35,7 @@ function ShippingAddressForm() {
       phone: "",
     },
   });
-   
+  const [orderId, setOrderId] = useState(null);
   const cart = useSelector((state) => state.cart.cartItems);
   const [createOrder, { isLoading }] = useCreateOrderMutation();
   console.log(cart);
