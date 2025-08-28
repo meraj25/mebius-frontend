@@ -1,6 +1,6 @@
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 
 import {
   Form,
@@ -27,6 +27,7 @@ const shippingAddresFormSchema = z.object({
 });
 
 function ShippingAddressForm() {
+  const navigate = useNavigate();
   const form = useForm({
     resolver: zodResolver(shippingAddresFormSchema),
     defaultValues: {
