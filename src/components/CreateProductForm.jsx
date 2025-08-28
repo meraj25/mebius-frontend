@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { file, z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Form,
@@ -127,7 +127,7 @@ function CreateProductForm({ categories }) {
             <FormItem>
               <FormLabel>Image</FormLabel>
               <FormControl>
-                <ImageInput onChange={field.onChange} value={field.value} />
+                <ImageInput type="file" onChange={field.onChange} value={field.value} />
               </FormControl>
               <FormMessage />
             </FormItem>
