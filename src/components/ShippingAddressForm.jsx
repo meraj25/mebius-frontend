@@ -55,7 +55,7 @@ function ShippingAddressForm() {
     console.log("Order created successfully:", result);
     const orderId = result.order._id; // must match backend response
     console.log(orderId);
-    navigate(`/shop/payments?orderId=${orderId}`);
+    navigate(`/shop/payment?orderId=${orderId}`);
   } catch (error) {
     console.log(error);
   }
