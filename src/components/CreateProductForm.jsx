@@ -127,7 +127,7 @@ function CreateProductForm({ categories }) {
             <FormItem>
               <FormLabel>Image</FormLabel>
               <FormControl>
-                <ImageInput type="file" onChange={field.onChange} value={field.value} />
+                <ImageInput type="file" accept=".jpg,.jpeg,.png" onChange={field.onChange} value={field.value} />
               </FormControl>
               <FormMessage />
             </FormItem>
